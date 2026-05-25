@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Strength Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 25%),
+          radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.16), transparent 20%),
+          #030712;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex items-center justify-center px-4 py-10 text-slate-100">
+    <main class="w-full max-w-2xl">
+      <section class="rounded-[2rem] border border-slate-700/80 bg-slate-950/85 p-8 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+        <div class="mb-8 text-center">
+          <p class="inline-flex items-center gap-2 rounded-full bg-slate-800/80 px-4 py-1 text-sm uppercase tracking-[0.25em] text-sky-300">
+            Password Strength Analyzer
+          </p>
+          <h1 class="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            Protect your accounts with a stronger password.
+          </h1>
+          <p class="mt-4 text-slate-400">Instantly evaluate password strength, get smart suggestions, and avoid common unsafe passwords.</p>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-[1.5rem] border border-slate-700/80 bg-slate-900/80 p-6 shadow-inner shadow-slate-950/20">
+            <label for="passwordInput" class="block text-sm font-medium text-slate-300 mb-3">Enter password</label>
+            <div class="relative">
+              <input
+                id="passwordInput"
+                type="password"
+                placeholder="Type your password"
+                class="w-full rounded-[1.5rem] border border-slate-700 bg-slate-950 px-5 py-4 pr-28 text-lg text-white outline-none transition focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20"
+                autocomplete="new-password"
+              />
+              <button
+                id="toggleButton"
+                type="button"
+                class="absolute inset-y-0 right-3 my-2 rounded-2xl border border-slate-700/80 bg-slate-900 px-4 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-white"
+              >
+                Show
+              </button>
+            </div>
+          </div>
+
+          <div class="rounded-[1.5rem] border border-slate-700/80 bg-slate-900/80 p-6 shadow-inner shadow-slate-950/20">
+            <div class="mb-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="text-sm uppercase tracking-[0.2em] text-slate-400">Strength</p>
+                <h2 id="strengthLabel" class="mt-2 text-2xl font-semibold text-white">Start typing</h2>
+              </div>
+              <span id="scoreBadge" class="inline-flex rounded-full bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-300">0 / 100</span>
+            </div>
+            <div class="h-3 overflow-hidden rounded-full bg-slate-800">
+              <div id="strengthBar" class="h-full w-0 rounded-full transition-all duration-300"></div>
+            </div>
+            <div class="mt-5 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl bg-slate-950/80 p-4 text-sm text-slate-300">
+                <p class="font-semibold text-slate-200">Crack estimate</p>
+                <p id="crackTime" class="mt-2 text-lg font-semibold text-slate-100">N/A</p>
+              </div>
+              <div class="rounded-2xl bg-slate-950/80 p-4 text-sm text-slate-300">
+                <p class="font-semibold text-slate-200">Security status</p>
+                <p id="securityStatus" class="mt-2 text-lg font-semibold text-slate-100">Waiting for input</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[1.5rem] border border-slate-700/80 bg-slate-900/80 p-6 shadow-inner shadow-slate-950/20">
+            <div class="mb-4 flex items-center justify-between">
+              <div>
+                <p class="text-sm uppercase tracking-[0.2em] text-slate-400">Optimization checklist</p>
+                <p class="mt-2 text-sm text-slate-500">Improve your password as you type.</p>
+              </div>
+            </div>
+            <ul id="suggestionList" class="space-y-3 text-sm text-slate-300">
+              <li class="flex items-start gap-3 rounded-2xl bg-slate-950/80 border border-slate-800 px-4 py-3">
+                <span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-sky-400"></span>
+                <span>Enter a password to see smart suggestions.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="rounded-[1.5rem] border border-slate-700/80 bg-slate-900/80 p-6 text-sm text-slate-400">
+            <p class="font-semibold text-slate-200">Common insecure passwords</p>
+            <p class="mt-2">This analyzer flags the top 10 most common passwords like <span class="text-slate-100">123456</span>, <span class="text-slate-100">password</span>, and <span class="text-slate-100">qwerty</span>.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
